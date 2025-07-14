@@ -1,0 +1,24 @@
+.scheduler-toolbar-root {
+    display: flex;
+    flex-direction: row;
+    width: 1070px;
+    padding: 3px 5px;
+    border: 1px solid var(--mantine-color-gray-3);
+    border-radius: var(--mantine-radius-md) var(--mantine-radius-md) 0 0;
+}
+
+.scheduler-display-settings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.scheduler-activity-settings {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: end;
+}

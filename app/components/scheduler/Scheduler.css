@@ -1,0 +1,23 @@
+.scheduler-grid-container {
+    width: 1070px;
+    background-color: #e9ecef;
+    overflow-x: hidden;
+    border: 1px solid var(--mantine-color-gray-4);
+    border-radius: 0 0 var(--mantine-radius-md) var(--mantine-radius-md);
+}
+
+.scheduler-grid {
+  display: flex;
+  flex-direction: row;
+}
+
+.scheduler-grid-background {
+    width: 980px;
+    height: 1440px;
+    margin: 0;
+    background-color: #f2f2f2;
+    background-image:
+      repeating-linear-gradient(var(--mantine-color-gray-4) 0 1px, transparent 1px 100%),
+      repeating-linear-gradient(90deg, var(--mantine-color-gray-4) 0 1px, transparent 1px 100%);
+    background-size: 140px 60px;
+}

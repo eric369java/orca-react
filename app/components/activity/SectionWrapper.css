@@ -1,0 +1,25 @@
+.activity-details-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5em;
+    margin-top: 0.8em;
+}
+
+.section-heading {
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+
+.section-icon {
+    padding-top: 5px;
+}
+
+.dark-gray {
+    color : var(--mantine-color-gray-7)
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

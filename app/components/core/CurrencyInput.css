@@ -1,0 +1,10 @@
+.source-currency-label {
+    margin-left: auto;
+    margin-right: 0.5em;
+}
+
+.dest-currency-label {
+    height: 100%;
+    line-height: 35px;
+    font-size: var(--mantine-font-size-md);
+}

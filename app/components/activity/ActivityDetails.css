@@ -1,0 +1,16 @@
+.activity-details-header {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 1px -1px var(--mantine-color-gray-6);
+}
+
+.activity-details-heading {
+    font-size: 1.8em;
+}
+
+.button-group {
+    display: flex;
+    column-gap: 5px;
+}
