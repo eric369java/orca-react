@@ -3,11 +3,11 @@
     grid-template-columns: repeat(7, 1fr);
     height: 90px;
     padding-left: 90px;
-    border-color: white;
+    border-bottom: 1px solid #CCCCCC;
     background-image: 
         repeating-linear-gradient(90deg, #CCCCCC 0 1px, transparent 1px 100%);
     background-size: 140px 90px;
-    background-position: 89px 0;
+    background-position: 90px 0;
 }
 
 .week-day-container {

@@ -1,4 +1,5 @@
 .hour-sidebar-container {
+    flex-shrink: 0;
     display: grid;
     grid-template-rows: repeat(24, 1fr);
     width: 90px;

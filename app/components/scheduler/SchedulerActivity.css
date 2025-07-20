@@ -1,6 +1,8 @@
 .scheduler-activity {
     width: 134px;
     padding: 0.5em;
+    color: var(--mantine-color-gray-8);
+    font-weight: 600;
     background-color: var(--mantine-color-blue-2);
     border-top: 3px solid var(--mantine-color-blue-4);
 }
