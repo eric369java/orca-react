@@ -10,29 +10,12 @@ const testUrl =
 
 export function Welcome() {
     const [opened, { open, close }] = useDisclosure(false);
-    const [activities, currentWeek, moveActivity, sendScheduleMessage] = useScheduler(testUrl);
+    const [activities, currentWeek, moveActivity, changeWeek] = useScheduler(testUrl,
+        "847e5832-3250-4def-bd45-e3deccc70cf9", "1f572a18-d3e5-4cec-9db0-835c2752c928");
 
     const openActivity = useCallback((id: string) => {
         open();
     }, []);
-
-    const shiftCurrentWeek = (numWeeks: number) => {
-        if (!currentWeek || !Number.isInteger(numWeeks)) {
-            return;
-        }
-
-        const nextWeek = new Date(currentWeek);
-        nextWeek.setUTCDate(currentWeek.getUTCDate() + numWeeks * 7);
-        const clientScheduleMessage: ClientScheduleMessage = {
-            client_id: "1f572a18-d3e5-4cec-9db0-835c2752c928",
-            type: "schedule",
-            action: "STEP",
-            schedule_id: "847e5832-3250-4def-bd45-e3deccc70cf9",
-            current_week: nextWeek.toISOString().split(".")[0],
-        };
-
-        sendScheduleMessage(clientScheduleMessage);
-    };
 
     const content = <ActivityDetails id="abc" close={close} />;
     return (
@@ -49,7 +32,7 @@ export function Welcome() {
                     currentWeek={currentWeek}
                     openActivity={openActivity}
                     moveActivity={moveActivity}
-                    shiftCurrentWeek={shiftCurrentWeek}
+                    changeWeek={changeWeek}
                 />
             </div>
         </main>

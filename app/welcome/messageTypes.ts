@@ -1,19 +1,11 @@
-type ClientMessage = {
-    type : "activity" | "schedule"
-    client_id : string
-}
-
-type ClientActivityMessage = ClientMessage & {
-    action : "GET" | "POST" | "UPDATE" | "DELETE"
-    activity_id : string | undefined
-    activity: Activity | undefined
-    description: string | undefined   
-}
-
-type ClientScheduleMessage = ClientMessage & {
-    action: "STEP"
-    schedule_id : string
-    current_week : string // ISO8601 format datetime
+type ActivityRequest = {
+    id : string,
+    client_id : string, 
+    action : "GETWEEK" | "GET" | "POST" | "PATCH" | "DELETE",
+    target_week : string // ISO8601 format datetime,
+    activity_id : string | null,
+    description : string | null,
+    activity : Activity | null
 }
 
 type Activity = {
@@ -27,4 +19,5 @@ type Activity = {
     location: string | undefined | null
     local_timezone: number
     dest_location: string | undefined | null
+    version : number
 }

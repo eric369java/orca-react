@@ -14,17 +14,16 @@ type SchedulerProps = {
     currentWeek : Date | undefined,
     openActivity: (id: string) => void,
     moveActivity: (id: string, left: number, top: number) => void,
-    shiftCurrentWeek : (numWeeks : number) => void
+    changeWeek : (offset : number) => void
 }
 
-export default function Scheduler({activities, currentWeek, openActivity, moveActivity, shiftCurrentWeek}: SchedulerProps) {
+export default function Scheduler({activities, currentWeek, openActivity, moveActivity, changeWeek}: SchedulerProps) {
     const [canDrag, setCanDrag] = useState<boolean>(false);
     const [canDelete, setCanDelete] = useState<boolean>(false);
 
     const [dragLayerBounds, setDragLayerBounds] = useState<DOMRect | null>(null);
     const schedulerRef = useRef<HTMLDivElement>(null);
     const schedulerScrollRef = useRef<HTMLDivElement>(null);
-    const completedInitialScroll = useRef<boolean>(false);
 
     // Custom DragLayer goes haywire when position: absolute. To workaround this, we use
     // fixed position and relay the bounds from the parent.
@@ -34,17 +33,22 @@ export default function Scheduler({activities, currentWeek, openActivity, moveAc
         }
     }, [schedulerRef]);
 
-    // When the Scheduler first loads, automatically scroll to 9 a.m.
     useEffect(() => {
-        if(schedulerScrollRef.current && completedInitialScroll.current == false) {
-            schedulerScrollRef.current.scrollTop = 9 * 2 * HALF_HOUR_GRID_HEIGHT;
-            completedInitialScroll.current = true;
+        const activityList = Object.values(activities)
+        if(schedulerScrollRef.current && activityList.length > 0) {
+            const maxScrollTop = 840 // The scheduler scroll window shows 10 hours, so 2 p.m. is the maximum top
+            const scrollTop = activityList.reduce((currentMin : number, activity : DraggableActivityData) => {
+                    return Math.min(currentMin, activity.top)
+            }, maxScrollTop);
+
+            // Add an 1 hour top margin to the first row of activities
+            schedulerScrollRef.current.scrollTop = Math.max(0, scrollTop - 2 * HALF_HOUR_GRID_HEIGHT);
         }
-    }, [schedulerScrollRef])
+    }, [currentWeek])
 
     return (
         <div>
-            <SchedulerToolbar setCanDelete={setCanDelete} setCanDrag={setCanDrag} shiftCurrentWeek={shiftCurrentWeek} />
+            <SchedulerToolbar setCanDelete={setCanDelete} setCanDrag={setCanDrag} changWeek={changeWeek} />
             <div className="scheduler-grid-container">
                 <WeekHeader startDate={currentWeek} />
                 <div className="scheduler-grid" ref={schedulerScrollRef}>

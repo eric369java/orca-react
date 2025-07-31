@@ -5,17 +5,17 @@ import './SchedulerToolbar.css'
 type SchedulerToolbarProps = {
     setCanDelete : React.Dispatch<React.SetStateAction<boolean>>,
     setCanDrag : React.Dispatch<React.SetStateAction<boolean>>,
-    shiftCurrentWeek : (numWeeks : number) => void,
+    changWeek : (offset : number) => void,
 }
 
-export default function SchedulerToolbar({setCanDelete, setCanDrag, shiftCurrentWeek} : SchedulerToolbarProps) {
+export default function SchedulerToolbar({setCanDelete, setCanDrag, changWeek} : SchedulerToolbarProps) {
     return (
         <div className='scheduler-toolbar-root'>
             <div className='scheduler-display-settings'>
-                <ActionIcon variant='subtle' size='lg' onClick={e => shiftCurrentWeek(-1)}>
+                <ActionIcon variant='subtle' size='lg' onClick={e => changWeek(-1)}>
                     <ChevronLeft />
                 </ActionIcon>
-                <ActionIcon variant='subtle' size='lg' onClick={e => shiftCurrentWeek(1)}>
+                <ActionIcon variant='subtle' size='lg' onClick={e => changWeek(1)}>
                     <ChevronRight />
                 </ActionIcon>
             </div>
