@@ -1,4 +1,4 @@
-.activity-details-header {
+.activity-header {
     position: sticky;
     display: flex;
     align-items: center;
@@ -6,7 +6,7 @@
     box-shadow: 0 2px 1px -1px var(--mantine-color-gray-6);
 }
 
-.activity-details-heading {
+.activity-heading {
     font-size: 1.8em;
 }
 

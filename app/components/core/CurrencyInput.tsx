@@ -1,50 +1,40 @@
-import { NumberInput } from "@mantine/core";
+import { ActionIcon, NumberInput, Tooltip } from "@mantine/core";
 import './CurrencyInput.css';
+import { Currency } from "lucide-react";
 
 type CurrencyInputProps = {
-    cost : Cost,
-    userCurrencySetting : string,
-    onChange : (cost: Cost) => void
+    initialValue : string | undefined,
+    onChange : (value: string | undefined) => void
 }
 
-// MOCK: Currently mocking user locale
-const locale = 'en-US';
-
-export default function CurrencyInput({cost, userCurrencySetting, onChange}: CurrencyInputProps) {
-
-    // TODO: Conversion api instead of mock.
-    const convertCurrency = (value : number, sourceCurrency: string, destCurrency: string) : string => {
-        return new Intl.NumberFormat(locale, {style: 'currency', currency: userCurrencySetting}).format(value * 0.0095);
-    }
-    
-    const getCurrencySymbolAndWidth = (currencyString: string) => {
-        let symbol = new Intl.NumberFormat(locale, {style: 'currency', currency: cost.currencyString}).formatToParts(0)
-        .find(p => p.type === 'currency')?.value;     
+export default function CurrencyInput({initialValue, onChange}: CurrencyInputProps) {    
+    const getCurrencySymbolAndWidth = (code: string | undefined) => {
+        let symbol = code ? new Intl.NumberFormat('en-US', {style: 'currency', currency: code}).formatToParts(0)
+        .find(p => p.type === 'currency')?.value : code;     
         
-        if (!symbol) {
-            symbol = currencyString;
-        }
-
         // Hack: NumberInput's left section doesn't autosize. Have to estimate the width the section should take.
-        const estimatedWidth = 16 + 8 * symbol.length;
+        const estimatedWidth = symbol ? 16 + 8 * symbol.length : 24;
         return [symbol, estimatedWidth] as const;
     }
 
-    const [symbol, estimatedWidth] = getCurrencySymbolAndWidth(cost.currencyString);
+    const [symbol, estimatedWidth] = getCurrencySymbolAndWidth(initialValue?.split(' ')[1]);
     const leftSection = (
-        <label className="dest-currency-label">{symbol}</label>
+        <label className="currency-symbol">{symbol}</label>
     )
 
+    // TODO: click to add denomination select to drawer stack
     const rightSection = (
-        <label className="source-currency-label">
-            <span>{`(${convertCurrency(cost.value ?? 0, cost.currencyString, userCurrencySetting)})`}</span>
-        </label>
+        <Tooltip label="Change currency">
+            <ActionIcon className="change-currency-button" variant='subtle' size='md'>
+                <Currency />
+            </ActionIcon>
+        </Tooltip>
     );
 
     return (
-        <NumberInput value={cost.value} onChange={(value) => onChange({value: value, currencyString: cost.currencyString} as Cost)}
-           allowNegative={false} maxLength={14} thousandSeparator=','
-           leftSection={leftSection} leftSectionWidth={`${estimatedWidth}px`}
-           decimalScale={2} rightSection={rightSection} rightSectionWidth={'50%'}/>
+        <NumberInput value={initialValue?.split(' ')[0]} onChange={(value) => onChange(`${value.toString()} JPY`)}
+            allowNegative={false} maxLength={14} thousandSeparator=','
+            leftSection={leftSection} leftSectionWidth={`${estimatedWidth}px`}
+            decimalScale={2} rightSection={rightSection} rightSectionWidth={'50%'}/>
     );
 }

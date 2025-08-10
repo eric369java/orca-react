@@ -3,31 +3,24 @@ import '@mantine/dates/styles.css';
 import './TimeRangePicker.css';
 
 type TimeRangePickerProps = {
-    timeRange: TimeRange,
-    onChange: (timeRange: TimeRange) => void
+    initialStartTime: string | undefined,
+    initialEndTime: string | undefined,
+    onChange: (value: string, isStartTime: boolean) => void
 }
 
-export default function TimeRangePicker({ timeRange, onChange }: TimeRangePickerProps) {
-    const getUpdatedTimeRange = (time: string, isStart: boolean) => {
-        const newRange : TimeRange = {
-            start: isStart ? time : timeRange.start,
-            end: isStart ? timeRange.end : time
-        }
-        return newRange;
-    }
-    
+export default function TimeRangePicker({initialStartTime, initialEndTime, onChange }: TimeRangePickerProps) {
     return (
         <div className='time-range-picker'>
             <TimePicker className='time-picker'
-                value={timeRange.start}
-                onChange={(value) => onChange(getUpdatedTimeRange(value, true))}
+                value={initialStartTime}
+                onChange={(value) => onChange(value, true)}
                 minutesStep={10}
                 withDropdown={true}
                 format='12h' />
             <label className='dark-gray'>To</label>
             <TimePicker className='time-picker'
-                value={timeRange.end}
-                onChange={(value) => onChange(getUpdatedTimeRange(value, false))}
+                value={initialEndTime}
+                onChange={(value) => onChange(value, false)}
                 minutesStep={10}
                 withDropdown={true}
                 format='12h' />

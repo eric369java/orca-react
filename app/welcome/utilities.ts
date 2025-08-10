@@ -31,8 +31,25 @@ export function gridCoordinatesToDate(startDate: Date, x: number, y: number) : D
     return date;
 }
 
+export const getActivityForm = (activity : Activity, description : string): ActivityForm => {
+    const date = activity.start.split('T')[0]
+    const startTime = activity.start.split('T')[1]
+    const endTime = activity.end.split('T')[1] 
+
+    let {start, end, ...activityProperties} = activity 
+
+    return {
+        ...activityProperties,
+        date : date,
+        startTime : startTime,
+        endTime : endTime,
+        description : description
+    } as ActivityForm
+}
+
 export function getActivity(draggableActivityData : DraggableActivityData, startDate: Date) : Activity {
     const { scheduleId, left, top, localTimezone, destLocation, ...otherEntries} = draggableActivityData
+
     const start = gridCoordinatesToDate(startDate, left, top)
     const end = gridCoordinatesToDate(startDate, left, top + draggableActivityData.height)
     const activity : Activity = {

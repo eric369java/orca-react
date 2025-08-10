@@ -6,10 +6,10 @@ type DraggableActivityData = {
     top: number
     height: number
     type: string
-    cost: string | undefined | null
-    location: string | undefined | null
+    cost: string | undefined
+    location: string | undefined
     localTimezone: number
-    destLocation: string | undefined | null
+    destLocation: string | undefined
     version: number
 }
 
