@@ -28,21 +28,19 @@ export function Welcome() {
 
     return (
         <main>
-            <div>
-                <Panel
-                    content={content}
-                    position="right"
-                    opened={opened}
-                    close={close}
-                />
-                <Scheduler
-                    activities={activities}
-                    currentWeek={currentWeek}
-                    openActivity={openActivity}
-                    moveActivity={moveActivity}
-                    changeWeek={changeWeek}
-                />
-            </div>
+            <Panel
+                content={content}
+                position="right"
+                opened={opened}
+                close={close}
+            />
+            <Scheduler
+                activities={activities}
+                currentWeek={currentWeek}
+                openActivity={openActivity}
+                moveActivity={moveActivity}
+                changeWeek={changeWeek}
+            />
         </main>
     );
 }

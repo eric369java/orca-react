@@ -47,7 +47,7 @@ export default function Scheduler({activities, currentWeek, openActivity, moveAc
     }, [currentWeek])
 
     return (
-        <div>
+        <>
             <SchedulerToolbar setCanDelete={setCanDelete} setCanDrag={setCanDrag} changWeek={changeWeek} />
             <div className="scheduler-grid-container">
                 <WeekHeader startDate={currentWeek} />
@@ -61,6 +61,6 @@ export default function Scheduler({activities, currentWeek, openActivity, moveAc
                     </DndProvider>          
                 </div>
             </div>
-        </div>
+        </>
     )
 }

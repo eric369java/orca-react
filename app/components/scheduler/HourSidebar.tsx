@@ -1,7 +1,6 @@
 import './HourSidebar.css'
 
 export default function HourSidebar() {
-
     const hours = Array.from(Array(24).keys()).map(hour => {
         let hourString = hour % 12 === 0 ? "12" : `${hour % 12}`;
         let meridium = hour / 12 >= 1 ? "PM" : "AM";

@@ -14,13 +14,19 @@ export default function useScheduler(connectionUrl : string, scheduleId: string,
     // useRef here for the event handlers to get the latest state.
     const currentWeekRef = useRef<Date>(new Date());
     const activitiesRef = useRef<SchedulerActivityMap>({});
-    currentWeekRef.current = currentWeek;
-    activitiesRef.current = activities;
 
     const [isLoadingForm, setIsLoadingForm] = useState<boolean>(false);
     const [activityFormInitValue, setActivityFormInitValue] = useState<ActivityForm | undefined>(undefined);
 
     const connectionRef = useRef<SchedulerRequestManager>(new SchedulerRequestManager());
+
+    useEffect(() => {
+        currentWeekRef.current = currentWeek;
+    }, [currentWeek])
+
+    useEffect(() => {
+        activitiesRef.current = activities;
+    }, [activities])
 
     useEffect(() => {        
         connectionRef.current.onResponse = onResponse;
