@@ -1,9 +1,9 @@
 import { useDisclosure } from "@mantine/hooks";
 import { useCallback, useMemo } from "react";
-import Panel from "~/components/panel/Panel";
-import Scheduler from "~/components/scheduler/Scheduler";
-import useScheduler from "./useScheduler";
-import ActivityForm from "~/components/activity/ActivityForm";
+import { Panel } from "~/components/panel/Panel";
+import { Scheduler } from "~/components/scheduler/Scheduler";
+import { useScheduler } from "./useScheduler";
+import { ActivityForm } from "~/components/activity/ActivityForm";
 
 const testUrl =
     "ws://localhost:8000/v1/schedule/847e5832-3250-4def-bd45-e3deccc70cf9/1f572a18-d3e5-4cec-9db0-835c2752c928";

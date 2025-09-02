@@ -7,7 +7,7 @@ type SectionWrapperProps = {
     title: string
 }
 
-export default function SectionWrapper({children, Icon, title}: SectionWrapperProps) {
+export function SectionWrapper({children, Icon, title}: SectionWrapperProps) {
     return (
         <div className="activity-details-section">
             <Icon className="section-icon dark-gray" size={22}/>

@@ -8,7 +8,7 @@ type SchedulerToolbarProps = {
     changWeek : (offset : number) => void,
 }
 
-export default function SchedulerToolbar({setCanDelete, setCanDrag, changWeek} : SchedulerToolbarProps) {
+export function SchedulerToolbar({setCanDelete, setCanDrag, changWeek} : SchedulerToolbarProps) {
     return (
         <div className='scheduler-toolbar-root'>
             <div className='scheduler-display-settings'>

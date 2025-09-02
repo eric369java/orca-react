@@ -1,6 +1,6 @@
 import { RequestActions } from "./constants";
 
-export default class SchedulerRequestManager {
+export class SchedulerRequestManager {
     private sentRequests : Array<string> = [];
     private websocket : WebSocket | undefined;
     private latestGetRequest : string | undefined;

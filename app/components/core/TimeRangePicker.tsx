@@ -8,7 +8,7 @@ type TimeRangePickerProps = {
     onChange: (value: string, isStartTime: boolean) => void
 }
 
-export default function TimeRangePicker({initialStartTime, initialEndTime, onChange }: TimeRangePickerProps) {
+export function TimeRangePicker({initialStartTime, initialEndTime, onChange }: TimeRangePickerProps) {
     return (
         <div className='time-range-picker'>
             <TimePicker className='time-picker'

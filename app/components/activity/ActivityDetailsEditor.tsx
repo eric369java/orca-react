@@ -1,18 +1,18 @@
 import { Select, } from "@mantine/core";
 import { Clock2, WalletCards, CircleDashed, Calendar1, MapPin } from "lucide-react";
-import CurrencyInput from "../core/CurrencyInput";
-import SectionWrapper from "./SectionWrapper";
+import { CurrencyInput } from "../core/CurrencyInput";
+import { SectionWrapper } from "./SectionWrapper";
 import { ACTIVITY_TYPES } from "./constants";
-import TimeRangePicker from "../core/TimeRangePicker";
+import { TimeRangePicker } from "../core/TimeRangePicker";
 import { DatePickerInput } from "@mantine/dates";
-import Geocoder from "../core/Geocoder";
+import { Geocoder } from "../core/Geocoder";
 import type { UseFormReturnType } from "@mantine/form";
 
 type ActivityDetailsEditorProps = {
     form : UseFormReturnType<ActivityForm>
 }
 
-export default function ActivityDetailsEditor({form}: ActivityDetailsEditorProps) {
+export function ActivityDetailsEditor({form}: ActivityDetailsEditorProps) {
     const activityTypePickerOptions = Object.entries(ACTIVITY_TYPES).map((kvp) => ({ value: kvp[0], label: kvp[1] }));
     
     const onCostChange = (value : string | undefined) => {

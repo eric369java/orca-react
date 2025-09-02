@@ -7,7 +7,7 @@ type CurrencyInputProps = {
     onChange : (value: string | undefined) => void
 }
 
-export default function CurrencyInput({initialValue, onChange}: CurrencyInputProps) {    
+export function CurrencyInput({initialValue, onChange}: CurrencyInputProps) {    
     const getCurrencySymbolAndWidth = (code: string | undefined) => {
         let symbol = code ? new Intl.NumberFormat('en-US', {style: 'currency', currency: code}).formatToParts(0)
         .find(p => p.type === 'currency')?.value : code;     

@@ -1,11 +1,11 @@
 import update from 'immutability-helper'
 import { RequestActions } from './constants'
-import SchedulerRequestFactory from './schedulerRequestFactory'
-import SchedulerRequestManager from './schedulerRequestManager'
+import { SchedulerRequestFactory } from './schedulerRequestFactory'
+import { SchedulerRequestManager } from './schedulerRequestManager'
 import { useEffect, useRef, useState } from "react"
 import { deserializeDate, getActivity, getActivityForm, getDraggableActivityData, getSchedulerActivityMap } from "./utilities"
 
-export default function useScheduler(connectionUrl : string, scheduleId: string, clientId : string) {
+export function useScheduler(connectionUrl : string, scheduleId: string, clientId : string) {
     const [currentWeek, setCurrentWeek] = useState<Date>(new Date());
     const [activities, setActivities] = useState<SchedulerActivityMap>({});
 

@@ -14,7 +14,7 @@ function getStyles(height: number) : CSSProperties {
     };
 }
 
-export default function SchedulerActivity({ id, title, height, openActivity } : SchedulerActivityProps) {
+export function SchedulerActivity({ id, title, height, openActivity } : SchedulerActivityProps) {
     return (
         <div className='scheduler-activity' style={getStyles(height)} onClick={() => openActivity?.(id)}>
             {title}

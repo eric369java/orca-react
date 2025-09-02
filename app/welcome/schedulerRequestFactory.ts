@@ -1,6 +1,6 @@
 import { serializeDate } from "./utilities"
 
-export default class ScheduleRequestFactory {
+export class SchedulerRequestFactory {
     static createGetWeekRequest(clientId: string, weekStart : Date) : ActivityRequest {
         return {
             id : this.generateRequestId(),

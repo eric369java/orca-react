@@ -1,7 +1,7 @@
 import { ActionIcon, Box, LoadingOverlay, Tooltip} from "@mantine/core";
 import { Save, X } from "lucide-react";
 import './ActivityForm.css';
-import ActivityDetailsEditor from "./ActivityDetailsEditor";
+import { ActivityDetailsEditor } from "./ActivityDetailsEditor";
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";
 import { useDisclosure } from "@mantine/hooks";
@@ -28,7 +28,7 @@ type ActivityFormProps = {
     close: () => void
 }
 
-export default function ActivityForm({ initialValues, isLoading, close }: ActivityFormProps) {
+export function ActivityForm({ initialValues, isLoading, close }: ActivityFormProps) {
     const [visible, { toggle }] = useDisclosure(false);
 
     const form = useForm<ActivityForm>({

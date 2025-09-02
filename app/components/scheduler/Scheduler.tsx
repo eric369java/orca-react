@@ -1,12 +1,12 @@
 import { DndProvider } from "react-dnd";
-import SchedulerContainer from "./SchedulerContainer";
-import SchedulerDragLayer from "./SchedulerDragLayer";
+import { SchedulerContainer } from "./SchedulerContainer";
+import { SchedulerDragLayer } from "./SchedulerDragLayer";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import './Scheduler.css';
 import { WeekHeader } from "./WeekHeader";
 import { useEffect, useRef, useState } from "react";
-import HourSidebar from './HourSidebar';
-import SchedulerToolbar from "./SchedulerToolbar";
+import { HourSidebar } from './HourSidebar';
+import { SchedulerToolbar } from "./SchedulerToolbar";
 import { HALF_HOUR_GRID_HEIGHT } from "./constants";
 
 type SchedulerProps = {
@@ -17,7 +17,7 @@ type SchedulerProps = {
     changeWeek : (offset : number) => void
 }
 
-export default function Scheduler({activities, currentWeek, openActivity, moveActivity, changeWeek}: SchedulerProps) {
+export function Scheduler({activities, currentWeek, openActivity, moveActivity, changeWeek}: SchedulerProps) {
     const [canDrag, setCanDrag] = useState<boolean>(false);
     const [canDelete, setCanDelete] = useState<boolean>(false);
 

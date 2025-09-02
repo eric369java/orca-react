@@ -1,7 +1,7 @@
 
 import { useDrop } from 'react-dnd'
 import { snapToSchedulerGrid, willActivitiesOverlap } from './utilities'
-import DraggableActivity from './DraggableActivity'
+import  { DraggableActivity } from './DraggableActivity'
 import './SchedulerContainer.css'
 import { HALF_HOUR_GRID_HEIGHT, ONE_DAY_GRID_WIDTH } from './constants'
 
@@ -21,7 +21,7 @@ type SchedulerContainerProps = {
     canDrag: boolean,
 }
 
-export default function SchedulerContainer({activities, openActivity, moveActivity, canDrag}: SchedulerContainerProps) {    
+export function SchedulerContainer({activities, openActivity, moveActivity, canDrag}: SchedulerContainerProps) {    
     const [, drop] = useDrop(
         () => ({
           accept: 'activity',

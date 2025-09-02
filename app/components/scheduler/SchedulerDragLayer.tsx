@@ -2,7 +2,7 @@ import { useDragLayer, type XYCoord } from "react-dnd";
 import { snapToSchedulerGrid } from "./utilities";
 import { type CSSProperties } from "react";
 import { HALF_HOUR_GRID_HEIGHT, ONE_DAY_GRID_WIDTH } from "./constants";
-import SchedulerActivity from "./SchedulerActivity";
+import { SchedulerActivity } from "./SchedulerActivity";
 
 function getLayerStyles(dragLayerBounds: DOMRect | null): CSSProperties {
   return {
@@ -60,7 +60,7 @@ type SchedulerDragLayerProps = {
   dragLayerBounds: DOMRect | null
 }
 
-export default function SchedulerDragLayer({dragLayerBounds}: SchedulerDragLayerProps) {
+export function SchedulerDragLayer({dragLayerBounds}: SchedulerDragLayerProps) {
     const { itemType, isDragging, item, initialOffset, currentOffset } =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),

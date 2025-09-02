@@ -1,7 +1,7 @@
 import { useEffect, type CSSProperties } from 'react'
 import { useDrag, type DragSourceMonitor } from 'react-dnd'
 import { getEmptyImage } from 'react-dnd-html5-backend'
-import SchedulerActivity from './SchedulerActivity'
+import { SchedulerActivity } from './SchedulerActivity'
 
 function getStyles(
     left: number,
@@ -23,7 +23,7 @@ type DraggableActivityProps = DraggableActivityData & {
     openActivity: (id : string) => void
 }
 
-export default function DraggableActivity({id, title, left, top, height, canDrag, openActivity} : DraggableActivityProps) {
+export function DraggableActivity({id, title, left, top, height, canDrag, openActivity} : DraggableActivityProps) {
     const [{ isDragging }, drag, preview] = useDrag(
         () => ({
             canDrag: canDrag,
